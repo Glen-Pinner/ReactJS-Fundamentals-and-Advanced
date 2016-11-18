@@ -40,21 +40,39 @@ class App extends React.Component {
                 }
             ]
         };
+
+        // bind click handler method for use in <button> element
+        this.addUser = this.addUser.bind(this);
+    }
+
+    addUser(e) {
+        var user = {
+            name: 'Tom',
+            age: 22,
+            bio: 'enjoys sports',
+            hobbies: ['basketball', 'baseball']
+        };
+
+        this.setState({
+            profiles: this.state.profiles.concat([user])
+        });
     }
 
     render() {
         let profiles = this.state.profiles.map(profile => {
-            return (<Profile
-                name={profile.name}
-                age={profile.age}
-                bio={profile.bio}
-                hobbies={profile.hobbies} />
+            return (
+                <Profile
+                    name={profile.name}
+                    age={profile.age}
+                    bio={profile.bio}
+                    hobbies={profile.hobbies}/>
             );
         });
 
         return (
             <div>
                 {profiles}
+                <button onClick={this.addUser}>Add new profile</button>
             </div>
         );
     }
