@@ -54,6 +54,34 @@ let WrappedComp1 = HOCGen(Comp1, { count: 0 });
 let WrappedComp2 = HOCGen(Comp2, { count: 100 });
 */
 
+
+/*
+ * Using property types on a component
+ *
+
+class MyComponent extends React.Component {
+
+    render() {
+        return (
+            <div>
+                <p>Name: {this.props.name}</p>
+                <p>Count: {this.props.count}</p>
+            </div>
+        );
+    }
+}
+
+MyComponent.propTypes = {
+    name: React.PropTypes.string,
+    count: React.PropTypes.number.isRequired
+};
+
+MyComponent.defaultProps = {
+    name: 'Joe'
+};
+*/
+
+
 export default class App extends React.Component {
     constructor(props) {
         super(props);
@@ -99,6 +127,7 @@ export default class App extends React.Component {
                 <AddProfile addUser={this.addUser} />
                 {/*<WrappedComp1/>*/}
                 {/*<WrappedComp2/>*/}
+                {/*<MyComponent count={4} />*/}
             </div>
         );
     }
