@@ -2,30 +2,27 @@ import React from 'react';
 
 import Profile from './Profile.jsx';
 import AddProfile from './AddProfile.jsx';
+import {getProfiles} from '../utils/profileApi';
 
 export default class App extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            profiles: [
-                {
-                    name: 'Sue',
-                    age: 30,
-                    bio: 'enjoys swimming and biking',
-                    hobbies: ['swimming', 'biking']
-                },
-                {
-                    name: 'Bill',
-                    age: 40,
-                    bio: 'enjoys long walks on the beach',
-                    hobbies: ['gardening', 'games']
-                }
-            ]
+            profiles: []
         };
 
         // bind click handler method for use in <button> element
         this.addUser = this.addUser.bind(this);
+    }
+
+    componentDidMount() {
+        getProfiles()
+            .then(profiles => {
+                this.setState({
+                    profiles: profiles
+                });
+            });
     }
 
     addUser(newProfile) {
@@ -35,6 +32,7 @@ export default class App extends React.Component {
     }
 
     render() {
+        console.log('app rendered');
         let profiles = this.state.profiles.map(profile => {
             return (
                 <Profile
