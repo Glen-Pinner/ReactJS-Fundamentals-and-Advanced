@@ -5,9 +5,11 @@
 import constants from '../constants/app-constants';
 import dispatcher from '../dispatcher/dispatcher';
 
-console.log(constants);
-console.log(dispatcher);
-
-export function testing() {
-
-}
+export let incrementActions = {
+    incrementCount: () => {
+        console.log('INCREMENT action dispatched');
+        dispatcher.dispatch({
+            actionType: constants.INCREMENT
+        });
+    }
+};
