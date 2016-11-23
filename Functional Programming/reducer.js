@@ -4,7 +4,7 @@
 
 let initialState = 0;
 
-function reduce(state = initialState, action) {
+function reducer(state = initialState, action) {
     switch (action.type) {
         case 'INCREMENT_COUNT':
             return state + 1;
@@ -14,8 +14,10 @@ function reduce(state = initialState, action) {
     }
 }
 
-let state = reduce(0, {type: 'INCREMENT_COUNT'});
-console.log(state);
+module.exports = reducer;
 
-result = reduce(state, {type: 'INCREMENT_COUNT'});
-console.log(result);
+// let state = reducer(0, {type: 'INCREMENT_COUNT'});
+// console.log(state);
+//
+// result = reducer(state, {type: 'INCREMENT_COUNT'});
+// console.log(result);
